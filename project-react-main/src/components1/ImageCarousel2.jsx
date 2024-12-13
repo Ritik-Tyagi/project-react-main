@@ -8,6 +8,40 @@ import {
   useBreakpointValue,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "50%",
+        right: "10px",
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "50%",
+        left: "10px",
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    />
+  );
+};
 
 const ImageCarousel2 = () => {
   const settings = {
@@ -16,6 +50,8 @@ const ImageCarousel2 = () => {
     speed: 500,
     slidesToShow: useBreakpointValue({ base: 1, md: 3, lg: 4 }),
     slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   const images = [

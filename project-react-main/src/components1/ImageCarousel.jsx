@@ -2,6 +2,41 @@ import React from "react";
 import Slider from "react-slick";
 import { Box, Image } from "@chakra-ui/react";
 
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "50%",
+        right: "10px",
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "50%",
+        left: "10px",
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    />
+  );
+};
+
 const ImageCarousel = () => {
   const settings = {
     dots: true,
@@ -10,7 +45,9 @@ const ImageCarousel = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2000,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   const images = [

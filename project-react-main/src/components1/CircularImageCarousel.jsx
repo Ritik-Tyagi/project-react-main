@@ -1,7 +1,40 @@
 import React from "react";
 import Slider from "react-slick";
 import { Box, Image, Heading, useBreakpointValue } from "@chakra-ui/react";
+const NextArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "50%",
+        right: "10px",
+      }}
+      onClick={onClick}
+    />
+  );
+};
 
+const PrevArrow = (props) => {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        display: "block",
+        background: "black",
+        borderRadius: "50%",
+        left: "10px",
+        zIndex: 1,
+      }}
+      onClick={onClick}
+    />
+  );
+};
 const CircularImageCarousel = () => {
   const settings = {
     dots: true,
@@ -9,6 +42,8 @@ const CircularImageCarousel = () => {
     speed: 500,
     slidesToShow: useBreakpointValue({ base: 1, md: 3, lg: 4 }),
     slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
   };
 
   const images = [
